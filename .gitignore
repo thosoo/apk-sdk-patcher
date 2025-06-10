@@ -1,0 +1,4 @@
+# Ignore generated test data
+/testdata/
+# Ignore apk files
+*.apk
