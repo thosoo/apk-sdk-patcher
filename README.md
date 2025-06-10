@@ -49,3 +49,15 @@ the script just like the container image:
 When run outside Docker the script will create a debug keystore under
 `~/.android/` if one does not already exist.  The patched APK will be
 written as `myapp-patched.apk` in the current directory.
+
+## Creating test data
+
+A helper script `create-test-data.sh` is provided to download a small open
+source APK for testing. The script stores the APK under `testdata/`:
+
+```bash
+./create-test-data.sh
+```
+
+After running the script the file `testdata/ApiDemos-debug.apk` will be
+available and can be patched using the Docker image or the local script.

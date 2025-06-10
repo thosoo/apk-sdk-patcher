@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Create test data
+        run: ./create-test-data.sh
       - name: Lint script
         run: bash -n patch-apk.sh
       - name: Build Docker image
         run: docker build -t apk-patcher .
+      - name: Patch sample APK
+        run: docker run --rm -v "$PWD/testdata:/work" apk-patcher ApiDemos-debug.apk
       - name: Show help
         run: docker run --rm apk-patcher --help
