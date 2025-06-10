@@ -59,5 +59,5 @@ source APK for testing. The script stores the APK under `testdata/`:
 ./create-test-data.sh
 ```
 
-After running the script the file `testdata/ApiDemos-debug.apk` will be
+After running the script the file `testdata/sample.apk` will be
 available and can be patched using the Docker image or the local script.

@@ -3,17 +3,19 @@
 set -euo pipefail
 
 OUT_DIR="testdata"
-URL="https://github.com/appium/sample-code/raw/master/sample-code/apps/ApiDemos-debug.apk"
+# Small open-source app from F-Droid
+URL="https://f-droid.org/repo/com.simplemobiletools.notes_26.apk"
 
 mkdir -p "$OUT_DIR"
 
-DEST="$OUT_DIR/ApiDemos-debug.apk"
+DEST="$OUT_DIR/sample.apk"
 
 if [ ! -f "$DEST" ]; then
-  echo "Downloading sample APK..."
+  echo "Downloading sample APK to $DEST..."
   curl -L "$URL" -o "$DEST"
 else
   echo "Sample APK already exists: $DEST"
 fi
 
-echo "Test data available at $DEST"
+# Print the path so callers can capture it
+echo "$DEST"

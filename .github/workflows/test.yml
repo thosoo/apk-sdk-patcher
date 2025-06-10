@@ -10,12 +10,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Create test data
-        run: ./create-test-data.sh
+        id: testdata
+        run: echo "dest=$(./create-test-data.sh)" >> "$GITHUB_OUTPUT"
       - name: Lint script
         run: bash -n patch-apk.sh
       - name: Build Docker image
         run: docker build -t apk-patcher .
       - name: Patch sample APK
-        run: docker run --rm -v "$PWD/testdata:/work" apk-patcher ApiDemos-debug.apk
+        run: |
+          docker run --rm -v "$PWD/testdata:/work" apk-patcher "$(basename "$DEST")"
+        env:
+          DEST: ${{ steps.testdata.outputs.dest }}
       - name: Show help
         run: docker run --rm apk-patcher --help
