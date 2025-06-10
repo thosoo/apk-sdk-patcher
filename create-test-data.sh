@@ -11,10 +11,10 @@ mkdir -p "$OUT_DIR"
 DEST="$OUT_DIR/sample.apk"
 
 if [ ! -f "$DEST" ]; then
-  echo "Downloading sample APK to $DEST..."
-  curl -L "$URL" -o "$DEST"
+  echo "Downloading sample APK to $DEST..." >&2
+  curl -L -s "$URL" -o "$DEST"
 else
-  echo "Sample APK already exists: $DEST"
+  echo "Sample APK already exists: $DEST" >&2
 fi
 
 # Print the path so callers can capture it

@@ -61,3 +61,5 @@ source APK for testing. The script stores the APK under `testdata/`:
 
 After running the script the file `testdata/sample.apk` will be
 available and can be patched using the Docker image or the local script.
+The script prints the full path to the APK on stdout so automation
+workflows can easily capture it.
