@@ -18,3 +18,8 @@ jobs:
           DEST=$(./create-test-data.sh)
           docker run --rm -v "$PWD/testdata:/work" apk-patcher "$(basename "$DEST")"
           docker run --rm apk-patcher --help
+      - name: Upload patched APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: patched-apk
+          path: testdata/*-patched.apk
