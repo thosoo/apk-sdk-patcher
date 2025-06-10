@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint script
+        run: bash -n patch-apk.sh
+      - name: Build Docker image
+        run: docker build -t apk-patcher .
+      - name: Show help
+        run: docker run --rm apk-patcher --help
