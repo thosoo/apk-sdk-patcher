@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 # Patch any APK to raise its targetSdk (default 34) and minSdk (optional).
-# Usage: ./patch-apk.sh app.apk [targetSdk] [minSdk]
+# Usage: patch-apk.sh app.apk [targetSdk] [minSdk]
 set -euo pipefail
+
+usage() {
+  echo "Usage: patch-apk.sh APK [targetSdk] [minSdk]" >&2
+  echo "Patch an APK's targetSdk (default 34) and optionally minSdk." >&2
+}
+
+if [[ ${1:-} == "-h" || ${1:-} == "--help" || $# -lt 1 ]]; then
+  usage
+  exit 0
+fi
 
 APK_IN="$1"
 TARGET_SDK="${2:-34}"          # default → Android 14
