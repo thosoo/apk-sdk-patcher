@@ -46,9 +46,9 @@ the script just like the container image:
 ./patch-apk.sh myapp.apk 34 21
 ```
 
-When run outside Docker the script will create a debug keystore under
-`~/.android/` if one does not already exist.  The patched APK will be
-written as `myapp-patched.apk` in the current directory.
+When run outside Docker the script will create a temporary debug keystore
+if one does not already exist. The patched APK will be written as
+`myapp-patched.apk` in the current directory.
 
 ## Creating test data
 

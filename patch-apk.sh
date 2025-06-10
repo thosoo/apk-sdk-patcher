@@ -20,7 +20,8 @@ WORKDIR="$(mktemp -d)"
 NAME="$(basename "${APK_IN%.*}")"
 OUT_DIR="$WORKDIR/out"
 PATCHED_APK="${NAME}-patched.apk"
-KEYSTORE="$HOME/.android/debug.keystore"
+# Store debug keystore in a temporary location unless overridden
+KEYSTORE="${KEYSTORE:-$WORKDIR/debug.keystore}"
 ALIAS=androiddebugkey
 STOREPASS=android
 KEYPASS=android
