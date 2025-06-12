@@ -50,6 +50,18 @@ When run outside Docker the script will create a temporary debug keystore
 if one does not already exist. The patched APK will be written as
 `myapp-patched.apk` in the current directory.
 
+## Using the GUI
+
+A minimal GUI is available via `patch_apk_gui.py`. Launch it with Python 3:
+
+```bash
+python3 patch_apk_gui.py
+```
+
+The interface lets you select an APK file and specify `targetSdk` and
+`minSdk` values. Behind the scenes it invokes `patch-apk.sh`, so the same
+tooling requirements apply when running outside Docker.
+
 ## Creating test data
 
 A helper script `create-test-data.sh` is provided to download a small open
